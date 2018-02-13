@@ -14,12 +14,13 @@ int main() {
 	unsigned depth = 4;
 	unsigned time = 20;
 
-	Matrix<char> a(width, height, depth, time);
+	infi_matrix<char> a(width, height, depth, time);
 
 	for (size_t t = 0; t < time; ++t) {
 		for (size_t z = 0; z < depth; ++z) {
 			for (size_t y = 0; y < height; ++y) {
 				for (size_t x = 0; x < width; ++x) {
+
 					a(x, y, z, t) = '#';
 				}
 			}
@@ -32,6 +33,7 @@ int main() {
 		for (size_t z = 0; z < depth; ++z) {
 			for (size_t y = 0; y < height; ++y) {
 				for (size_t x = 0; x < width; ++x) {
+
 					cout << a(x, y, z, t) << ' ';
 				}
 				cout << '\n';

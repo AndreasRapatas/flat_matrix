@@ -4,7 +4,7 @@
 #include <vector>
 
 template<typename T>
-class Matrix {
+class infi_matrix {
 
 	std::vector<unsigned> dimentions;
 	std::vector<T> data;
@@ -12,7 +12,7 @@ class Matrix {
 public:
 
 	template<typename... T_dim>
-	Matrix(T_dim... dimz) {
+	infi_matrix(T_dim... dimz) {
 
 		dimentions = { static_cast<unsigned>(dimz)... };
 
@@ -36,7 +36,11 @@ public:
 		for (unsigned i = 0; i < size(); ++i) {
 
 			unsigned multiplier = 1;
-			for (unsigned dimention_index = 0; dimention_index < i; ++dimention_index) {
+			for (
+				unsigned dimention_index = 0;
+				dimention_index < i;
+				++dimention_index
+			) {
 				multiplier *= dimentions[dimention_index];
 			}
 
@@ -58,6 +62,15 @@ public:
 		return data[find_index(dimz...)];
 	}
 
+	T const& operator[](unsigned index) const {
+
+		return data[index];
+	}
+
+	T &operator[](unsigned index) {
+
+		return data[index];
+	}
 };
 
-#endif /* end of include guard: INFI_MATRIX_H */
+#endif // INFI_MATRIX_H
