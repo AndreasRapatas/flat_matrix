@@ -12,11 +12,19 @@ infi_matrix<std::string> my_matrix(
 	// anything
 );
 
+// Sequential Access
 for (unsigned i = 0; i < my_matrix.size(); ++i) {
 	my_matrix[i] = "Sad";
 }
 
-my_matrix(808, 69, 9000, 1337, 42) = "Happy";
+// Random Access
+my_matrix(
+	808,  // Width
+	69,   // Height
+	9000, // Depth
+	1337, // Time
+	42    // Universe ID
+) = "Happy";
 
 ```
 
