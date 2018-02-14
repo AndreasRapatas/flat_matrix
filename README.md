@@ -1,5 +1,5 @@
-# Infinite Dimention Matrix
-An Infinite Dimention Matrix, stored in a flattened state as a vector for faster access.
+# Infinite Dimension Matrix
+An Infinite Dimension Matrix, stored in a flattened state as a vector for faster access.
 
 # Usage
 ```cpp
