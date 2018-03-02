@@ -1,5 +1,5 @@
 # Infinite Dimension Matrix
-An Infinite Dimension Matrix, stored in a flattened state as a vector for faster access.
+An Infinite Dimension Matrix, stored in a flattened state as an array for faster access.
 
 # Usage
 ```cpp
@@ -28,6 +28,5 @@ my_matrix(
 
 ```
 
-# TODO:
-- Remove vector, allocate array manually.
+### TODO:
 - Offer iterators.
