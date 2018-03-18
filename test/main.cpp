@@ -2,7 +2,7 @@
 #include <vector>
 #include <string>
 
-#include "infi_matrix.h"
+#include "flat_matrix.h"
 
 using namespace std;
 
@@ -14,7 +14,7 @@ int main() {
 	unsigned depth = 4;
 	unsigned time = 20;
 
-	infi_matrix<char> a(width, height, depth, time);
+	flat_matrix<char> a(width, height, depth, time);
 
 	for (size_t t = 0; t < time; ++t) {
 		for (size_t z = 0; z < depth; ++z) {

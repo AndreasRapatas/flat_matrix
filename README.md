@@ -1,9 +1,9 @@
-# Infinite Dimension Matrix
+# Flat Infinite Dimension Matrix
 An Infinite Dimension Matrix, stored in a flattened state as an array for faster access.
 
 # Usage
 ```cpp
-infi_matrix<std::string> my_matrix(
+flat_matrix<std::string> my_matrix(
 	width,
 	height,
 	depth,

@@ -1,8 +1,8 @@
-#ifndef INFI_MATRIX_H
-#define INFI_MATRIX_H
+#ifndef FLAT_MATRIX_H
+#define FLAT_MATRIX_H
 
 template<typename T>
-class infi_matrix {
+class flat_matrix {
 
 	unsigned *dimentions;
 	unsigned dimention_count;
@@ -26,7 +26,7 @@ class infi_matrix {
 public:
 
 	template<typename... T_dim>
-	infi_matrix(T_dim... dimz) :
+	flat_matrix(T_dim... dimz) :
 		dimention_count(sizeof...(T_dim))
 	{
 		dimentions = array_from_variadic(dimz...);
@@ -36,12 +36,61 @@ public:
 			size *= dimentions[i];
 		}
 		data = new T[size];
+		data_size = size;
 	}
 
-	~infi_matrix() {
+	~flat_matrix() {
 
 		delete[] dimentions;
 		delete[] data;
+	}
+
+	flat_matrix(const flat_matrix &other) {
+
+		dimention_count = other.dimention_count;
+		data_size       = other.data_size;
+		dimentions      = new unsigned[dimention_count];
+		data            = new T[data_size];
+	}
+
+	flat_matrix& operator=(const flat_matrix &other) {
+
+		if (this == &other) { return *this; }
+
+		dimention_count = other.dimention_count;
+		data_size       = other.data_size;
+		dimentions      = new unsigned[dimention_count];
+		data            = new T[data_size];
+
+		return *this;
+	}
+
+	flat_matrix(flat_matrix &&other) {
+
+		dimention_count = other.dimention_count;
+		data_size       = other.data_size;
+		dimentions      = other. dimentions;
+		data            = other.data;
+
+		other.dimention_count = 0;
+		other.dimentions      = nullptr;
+		other.data_size       = 0;
+		other.data            = nullptr;
+	}
+
+	flat_matrix& operator=(flat_matrix &&other) {
+
+		dimention_count = other.dimention_count;
+		data_size       = other.data_size;
+		dimentions      = other. dimentions;
+		data            = other.data;
+
+		other.dimention_count = 0;
+		other.dimentions      = nullptr;
+		other.data_size       = 0;
+		other.data            = nullptr;
+
+		return *this;
 	}
 
 	unsigned size() const { return data_size; }
@@ -91,4 +140,4 @@ public:
 	}
 };
 
-#endif // INFI_MATRIX_H
+#endif // FLAT_MATRIX_H
