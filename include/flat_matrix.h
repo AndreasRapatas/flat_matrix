@@ -51,6 +51,14 @@ public:
 		data_size       = other.data_size;
 		dimentions      = new unsigned[dimention_count];
 		data            = new T[data_size];
+
+		for (unsigned i = 0; i != data_size; ++i) {
+			data[i] = other.data[i];
+		}
+
+		for (unsigned i = 0; i != dimention_count; ++i) {
+			dimentions[i] = other.dimentions[i];
+		}
 	}
 
 	flat_matrix& operator=(const flat_matrix &other) {
@@ -61,6 +69,14 @@ public:
 		data_size       = other.data_size;
 		dimentions      = new unsigned[dimention_count];
 		data            = new T[data_size];
+
+		for (unsigned i = 0; i != data_size; ++i) {
+			data[i] = other.data[i];
+		}
+
+		for (unsigned i = 0; i != dimention_count; ++i) {
+			dimentions[i] = other.dimentions[i];
+		}
 
 		return *this;
 	}
