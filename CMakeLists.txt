@@ -4,6 +4,7 @@ add_executable(
 	test_flat_matrix
 	tests/main.cpp
 	tests/logic.cpp
+	tests/copy_move.cpp
 	)
 
 add_subdirectory(./third_party/catch2)
