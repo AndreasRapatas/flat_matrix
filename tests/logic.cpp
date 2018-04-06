@@ -8,24 +8,24 @@ SCENARIO ("Basic") {
 	unsigned height = 5;
 	unsigned depth = 8;
 
-    GIVEN ("1D bool flat_matrix") {
+	GIVEN ("1D bool flat_matrix") {
 
 
 		flat_matrix<bool> arr(width);
 
-        WHEN ("setting each one to false in a for loop using operator[]") {
+		WHEN ("setting each one to false in a for loop using operator[]") {
 
 			for (unsigned i = 0; i < arr.size(); ++i) {
 				arr[i] = false;
 			}
 
-            THEN ("Each one should be false") {
+			THEN ("Each one should be false") {
 
 				for (unsigned i = 0; i < arr.size(); ++i) {
 					REQUIRE(arr[i] == false);
 				}
-            }
-        }
+			}
+		}
 
 		WHEN ("setting each one to false in a for loop using operator()") {
 
@@ -40,7 +40,7 @@ SCENARIO ("Basic") {
 				}
 			}
 		}
-    }
+	}
 
 	GIVEN ("2D bool flat_matrix") {
 
