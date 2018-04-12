@@ -67,6 +67,8 @@ public:
 
 		dimention_count = other.dimention_count;
 		data_size       = other.data_size;
+		delete[] dimentions;
+		delete[] data;
 		dimentions      = new unsigned[dimention_count];
 		data            = new T[data_size];
 
@@ -98,7 +100,7 @@ public:
 
 		dimention_count = other.dimention_count;
 		data_size       = other.data_size;
-		dimentions      = other. dimentions;
+		dimentions      = other.dimentions;
 		data            = other.data;
 
 		other.dimention_count = 0;
