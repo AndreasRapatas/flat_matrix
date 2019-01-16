@@ -41,7 +41,7 @@ write_basic_package_version_file(
 	COMPATIBILITY AnyNewerVersion
 )
 configure_package_config_file(
-	"${PROJECT_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.cmake.in"
+	"${PROJECT_SOURCE_DIR}/cmake/configs/${PROJECT_NAME}Config.cmake.in"
 	"${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
 	INSTALL_DESTINATION lib/cmake/${PROJECT_NAME}
 )
