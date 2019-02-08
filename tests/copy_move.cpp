@@ -1,6 +1,6 @@
 #include <utility>
 
-#include <catch/catch.hpp>
+#include <catch2/catch.hpp>
 
 #include "../include/flat_matrix.h"
 

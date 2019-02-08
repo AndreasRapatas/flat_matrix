@@ -1,4 +1,4 @@
-#include <catch/catch.hpp>
+#include <catch2/catch.hpp>
 
 #include "../include/flat_matrix.h"
 
@@ -9,7 +9,6 @@ SCENARIO ("Basic") {
 	unsigned depth = 8;
 
 	GIVEN ("1D bool flat_matrix") {
-
 
 		flat_matrix<bool> arr(width);
 
@@ -117,6 +116,39 @@ SCENARIO ("Basic") {
 						}
 					}
 				}
+			}
+		}
+	}
+
+	GIVEN ("empty flat_matrix") {
+
+		flat_matrix<bool> matrix;
+
+		WHEN ("calling operator[]") {
+
+			bool exception_thrown = false;
+			try {
+				matrix[0] = false;
+			} catch (std::out_of_range e) {
+				exception_thrown = true;
+			}
+
+			THEN ("Exception thrown") {
+				REQUIRE(exception_thrown);
+			}
+		}
+
+		WHEN ("calling operator()") {
+
+			bool exception_thrown = false;
+			try {
+				matrix(0) = false;
+			} catch (std::out_of_range e) {
+				exception_thrown = true;
+			}
+
+			THEN ("Exception thrown") {
+				REQUIRE(exception_thrown);
 			}
 		}
 	}

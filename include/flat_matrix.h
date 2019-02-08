@@ -1,13 +1,15 @@
 #ifndef FLAT_MATRIX_H
 #define FLAT_MATRIX_H
 
+#include <stdexcept>
+
 template<typename T>
 class flat_matrix {
 
-	unsigned *dimentions;
-	unsigned dimention_count;
-	T *data;
-	unsigned data_size;
+	unsigned *dimentions = nullptr;
+	unsigned dimention_count = 0;
+	T *data = nullptr;
+	unsigned data_size = 0;
 
 	template<typename... Type>
 	unsigned *array_from_variadic(Type... args) const {
@@ -25,10 +27,24 @@ class flat_matrix {
 
 public:
 
+	flat_matrix() {}
+
 	template<typename... T_dim>
-	flat_matrix(T_dim... dimz) :
-		dimention_count(sizeof...(T_dim))
-	{
+	flat_matrix(T_dim... dimz) {
+		resize(dimz...);
+	}
+
+	template<typename... T_dim>
+	void resize(T_dim... dimz) {
+
+		if (dimention_count) {
+			delete [] dimentions;
+		}
+		if (data_size) {
+			delete [] data;
+		}
+
+		dimention_count = sizeof...(T_dim);
 		dimentions = array_from_variadic(dimz...);
 
 		unsigned size = 1;
@@ -141,19 +157,31 @@ public:
 
 	template<typename... T_dim>
 	T const& operator()(T_dim... dimz) const {
+		if (data_size == 0) {
+			throw std::out_of_range("operator() called on empty flat_matrix");
+		}
 		return data[find_index(dimz...)];
 	}
 
 	template<typename... T_dim>
 	T &operator()(T_dim... dimz) {
+		if (data_size == 0) {
+			throw std::out_of_range("operator() called on empty flat_matrix");
+		}
 		return data[find_index(dimz...)];
 	}
 
 	T const& operator[](unsigned index) const {
+		if (data_size == 0) {
+			throw std::out_of_range("operator[] called on empty flat_matrix");
+		}
 		return data[index];
 	}
 
 	T &operator[](unsigned index) {
+		if (data_size == 0) {
+			throw std::out_of_range("operator[] called on empty flat_matrix");
+		}
 		return data[index];
 	}
 };

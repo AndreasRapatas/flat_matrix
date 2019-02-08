@@ -1,16 +1,8 @@
-# Link to this with
-# find_package(lib_name CONFIG REQUIRED)
-# target_link_libraries(${PROJECT_NAME} lib_name::lib_name)
-
-
 cmake_minimum_required(VERSION 3.0)
-
-# Required for YCM to work
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 project(
 	flat_matrix
-	VERSION 1.1
+	VERSION 1.2
 	LANGUAGES CXX
 )
 
@@ -74,11 +66,11 @@ install(
 # Testing
 # =======
 
-# To run the tests, Install https://github.com/catchorg/Catch2
+# Use cmake .. -DBUILD_TESTING=1
+if (BUILD_TESTING)
 
-include(CTest)
-find_package(Catch2 CONFIG QUIET)
-if (BUILD_TESTING AND Catch2_FOUND)
+	# To run the tests, Install https://github.com/catchorg/Catch2
+	find_package(Catch2 CONFIG REQUIRED)
 
 	add_executable(
 		${PROJECT_NAME}_test
@@ -90,7 +82,7 @@ if (BUILD_TESTING AND Catch2_FOUND)
 	target_link_libraries(
 		${PROJECT_NAME}_test
 		PRIVATE
-		Catch2::Catch
+		Catch2::Catch2
 	)
 
 	add_test(
@@ -98,5 +90,3 @@ if (BUILD_TESTING AND Catch2_FOUND)
 		COMMAND ${PROJECT_NAME}_test
 	)
 endif()
-
-
