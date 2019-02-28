@@ -1,4 +1,4 @@
-# Flat Infinite Dimension Matrix
+# Flat Matrix
 An Infinite Dimension Matrix, stored in a flattened state as an array for faster access.
 
 # Usage
@@ -28,5 +28,11 @@ my_matrix(
 
 ```
 
-### TODO:
-- Offer iterators.
+# Installation
+```bash
+git clone https://github.com/Rapatas/flat_matrix
+mkdir flat_matrix/build
+cd flat_matrix/build
+cmake ..
+make install # As root
+```
